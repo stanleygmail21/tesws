@@ -16,23 +16,23 @@ const DB = process.env.DATABASE.replace(
 );
 
 // CONNECT TO LOCAL DATABASE
-mongoose
-  .connect(process.env.DATABASE_LOCAL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  })
-  .then(() => console.log('DB connection successful!'));
-
 // mongoose
-//   .connect(DB, {
+//   .connect(process.env.DATABASE_LOCAL, {
 //     useNewUrlParser: true,
 //     useCreateIndex: true,
 //     useUnifiedTopology: true,
 //     useFindAndModify: false
 //   })
 //   .then(() => console.log('DB connection successful!'));
+
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+  .then(() => console.log('DB connection successful!'));
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
